@@ -60,13 +60,6 @@ public class Position {
 		return pos.col >= 0 && pos.col < dimX && pos.row >= 0 && pos.row < dimY;
 	}
 
-	public boolean distance1(Position other) {
-		int distRow = Math.abs(this.row - other.row);
-		int distCol = Math.abs(this.col - other.col);
-
-		return distRow + distCol <= 1;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(col, row);
@@ -75,12 +68,5 @@ public class Position {
 	@Override
 	public String toString() {
 		return "(" + this.row + "," + this.col + ")";
-	}
-
-	public Position mirrorP(int dimX) {
-		int r = this.row;
-		int c = dimX - 1 - this.col;
-
-		return new Position(c, r);
 	}
 }

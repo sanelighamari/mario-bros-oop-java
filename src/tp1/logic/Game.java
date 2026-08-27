@@ -8,7 +8,6 @@ import tp1.exceptions.GameLoadException;
 import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
-import tp1.exceptions.PositionParseException;
 import tp1.logic.gameobjects.*;
 import tp1.view.Messages;
 
@@ -19,7 +18,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	private GameObjectContainer gameObjects;
 	private Mario mario;
-	private Luigi lui;
 
 	private int nLevel;
 	private int remainingTime;
@@ -296,24 +294,17 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.mario.readActions();
 	}
 
-	// antes que nada miro si es mario
 	@Override
 	public boolean addObject(String[] objsStr) throws OffBoardException, ObjectParseException {
 		Mario newMario = new Mario(this, new Position(0, 0));
 		newMario = newMario.parse(objsStr, this);
-		
-		Luigi newLui = new Luigi(this, new Position(0, 0));
-		newLui = newLui.parse(objsStr, this);
-				
-		if (newMario != null) {
-			gameObjects.add(newMario);
-			this.mario = newMario;
-		} else if(newLui != null) {
-			gameObjects.add(newLui);
-			this.lui = newLui;
-		} else {
+		GameObject newObject = newMario;
+		if (newMario == null) {
 			GameObject obj = GameObjectFactory.parse(objsStr, this);
-			if(obj != null) gameObjects.add(obj);
+			gameObjects.add(obj);
+		} else {
+			gameObjects.add(newObject);
+			this.mario = newMario;
 		}
 		return true;
 	}
@@ -339,17 +330,14 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.remainingTime = fileConfiguration.getRemainingTime();
 		this.points = fileConfiguration.points();
 		this.numLives = fileConfiguration.numLives();
+
 		this.gameObjects = new GameObjectContainer();
-		
 		for (GameObject obj : fileConfiguration.getNPCObjects()) {
 			this.gameObjects.add(obj);
 		}
 
 		this.mario = fileConfiguration.getMario();
-		if (this.mario != null) this.gameObjects.add(this.mario);
-		
-		this.lui = fileConfiguration.getLuigi();
-        if (this.lui != null) this.gameObjects.add(this.lui);
+		this.gameObjects.add(this.mario);
 	}
 
 	// Los Metodos de Interfaz GameStatus:
@@ -448,42 +436,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 
 	@Override
-	public void reverseDirections() {
-		gameObjects.reverseDirections();
-	}
-
-	@Override
-	public void mirror() {
-		gameObjects.mirrorPos(DIM_X);
-	}
-
-	public void teleport(String[] commandWords) throws GameModelException {
-		try {
-			Position ini = new Position(commandWords[0]);
-			Position fin = new Position(commandWords[1]);
-
-			if (!positionIsIn(ini) || !positionIsIn(fin)) {
-				throw new OffBoardException(Messages.OFF_BOARD_POSITION.formatted(String.join(" ", commandWords)));
-			}
-
-			if (isSolid(fin)) {
-				throw new GameModelException("End position contains a solid object");
-			}
-
-			gameObjects.teleport(ini, fin);
-		} catch (PositionParseException obe) {
-			throw new PositionParseException(Messages.INVALID_POSITION + obe);
-		}
-	}
-	
-	@Override
-	public void addActionLui(Action act) {
-		if (this.lui != null) {
-	        this.lui.addAction(act);
-	    }
-	}
-
-	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(remainingTime + " " + points + " " + numLives + "\n");
@@ -491,4 +443,5 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 		return sb.toString();
 	}
+
 }

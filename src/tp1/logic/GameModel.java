@@ -23,12 +23,4 @@ public interface GameModel {
 
 	public void load(String fileName) throws GameLoadException;
 
-	public void reverseDirections();
-
-	void mirror();
-	
-	public void teleport(String[] commandWords) throws GameModelException;
-
-	public void addActionLui(Action act);
-
 }

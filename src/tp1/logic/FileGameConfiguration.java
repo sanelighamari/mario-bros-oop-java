@@ -13,7 +13,6 @@ import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.GameObjectFactory;
-import tp1.logic.gameobjects.Luigi;
 import tp1.logic.gameobjects.Mario;
 import tp1.view.Messages;
 
@@ -23,7 +22,6 @@ public class FileGameConfiguration implements GameConfiguration {
 	private int points;
 	private int numLives;
 	private Mario mario;
-	private Luigi luigi;
 	private List<GameObject> gameObjects;
 
 	public static final GameConfiguration NONE = new FileGameConfiguration();
@@ -89,19 +87,12 @@ public class FileGameConfiguration implements GameConfiguration {
 
 				Mario aux = new Mario(game, new Position(0, 0));
 				Mario newMario = aux.parse(tokens, game);
-
-				Luigi auxL = new Luigi(game, new Position(0, 0));
-				Luigi newLuigi = auxL.parse(tokens, game);
-
-				if (newMario != null) {
-					this.mario = newMario;
-				} else if (newLuigi != null) {
-					this.luigi = newLuigi;
-				} else {
+				if (newMario == null) {
 					GameObject obj = GameObjectFactory.parse(tokens, game);
 					gameObjects.add(obj);
+				} else {
+					this.mario = newMario;
 				}
-
 			}
 		} catch (OffBoardException | ObjectParseException e) {
 			throw e;
@@ -127,11 +118,6 @@ public class FileGameConfiguration implements GameConfiguration {
 	public Mario getMario() {
 		return new Mario(this.mario);
 	}
-	
-	@Override
-    public Luigi getLuigi() {
-        return this.luigi != null ? new Luigi(this.luigi) : null;
-    }
 
 	@Override
 	public List<GameObject> getNPCObjects() {

@@ -59,11 +59,6 @@ public abstract class GameObject implements GameItem {
 		isAlive = false;
 	}
 
-	@Override
-	public boolean isWithinDistance1(Position pos) {
-		return this.pos.distance1(pos);
-	}
-
 	public abstract boolean isSolid();
 
 	public abstract void update();
@@ -72,11 +67,6 @@ public abstract class GameObject implements GameItem {
 
 	public abstract boolean interactWith(GameItem item);
 
-//	public abstract void reverseDirection();
-	public void reverseDirection() {
-
-	}
-
 	@Override
 	public boolean receiveInteraction(Land obj) {
 		return false;
@@ -84,6 +74,11 @@ public abstract class GameObject implements GameItem {
 
 	@Override
 	public boolean receiveInteraction(ExitDoor obj) {
+		return false;
+	}
+
+	@Override
+	public boolean receiveInteraction(Mario obj) {
 		return false;
 	}
 
@@ -102,26 +97,6 @@ public abstract class GameObject implements GameItem {
 		return false;
 	}
 
-	@Override
-	public boolean receiveInteraction(Grenade grenade) {
-		return false;
-	}
-
-	@Override
-	public boolean receiveInteraction(CajaEstrella ce) {
-		return false;
-	}
-
-	@Override
-	public boolean receiveInteraction(SolidIsLava solidIsLava) {
-		return false;
-	}
-
-	@Override
-	public boolean receiveInteraction(Player player) {
-		return false;
-	}
-	
 	public abstract GameObject copy();
 
 	@Override
@@ -154,14 +129,6 @@ public abstract class GameObject implements GameItem {
 	@Override
 	public String toString() {
 		return String.format("%s %s", this.pos.toString(), this.name);
-	}
-
-	public void mirrorPosition(int dimX) {
-		this.pos = this.pos.mirrorP(dimX);
-	}
-
-	public void teleport(Position fin) {
-		this.pos = fin;
 	}
 
 }

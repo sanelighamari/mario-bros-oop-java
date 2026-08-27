@@ -68,11 +68,4 @@ public abstract class MovingObject extends GameObject {
 		}
 		return parentStr;
 	}
-
-	@Override
-	public void reverseDirection() {
-		if (this.direction != Action.STOP) {
-			this.direction = this.direction.opposite();
-		}
-	}
 }

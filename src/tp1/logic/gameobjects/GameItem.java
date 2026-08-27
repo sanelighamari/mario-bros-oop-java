@@ -22,22 +22,14 @@ public interface GameItem {
 
 	public boolean receiveInteraction(ExitDoor obj);
 
+	public boolean receiveInteraction(Mario obsj);
+
 	public boolean receiveInteraction(Goomba obj);
 
 	public boolean receiveInteraction(Mushroom mushroom);
 
 	public boolean receiveInteraction(Box box);
 
-	public boolean receiveInteraction(Grenade grenade);
-
-	public boolean receiveInteraction(CajaEstrella cajaEstrella);
-
-	public boolean receiveInteraction(SolidIsLava solidIsLava);
-	
-	public boolean receiveInteraction(Player player);
-
 	public GameObject parse(String[] objWords, GameWorld game) throws GameModelException, CommandExecuteException;
-
-	public boolean isWithinDistance1(Position pos);
 
 }

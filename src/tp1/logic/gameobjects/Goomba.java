@@ -81,14 +81,7 @@ public class Goomba extends MovingObject {
 	}
 
 	@Override
-	public boolean receiveInteraction(Player player) {
-		return true;
-	}
-	
-	@Override
-	public boolean receiveInteraction(Grenade grenade) {
-		dead();
-		game.addPoints(100);
+	public boolean receiveInteraction(Mario mario) {
 		return true;
 	}
 

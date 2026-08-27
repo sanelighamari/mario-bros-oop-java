@@ -47,7 +47,7 @@ public class ExitDoor extends GameObject {
 	}
 
 	@Override
-	public boolean receiveInteraction(Player player) {
+	public boolean receiveInteraction(Mario obj) {
 		game.marioExited();
 		return true;
 	}

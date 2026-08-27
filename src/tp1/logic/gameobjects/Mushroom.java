@@ -74,9 +74,9 @@ public class Mushroom extends MovingObject {
 	}
 
 	@Override
-	public boolean receiveInteraction(Player player) {
+	public boolean receiveInteraction(Mario mario) {
 		this.dead();
-		return player.receiveInteraction(this);
+		return mario.receiveInteraction(this);
 	}
 
 	@Override
@@ -103,8 +103,4 @@ public class Mushroom extends MovingObject {
 		return new Mushroom(this);
 	}
 
-	@Override
-	public boolean receiveInteraction(Grenade grenade) {
-		return true;
-	}
 }

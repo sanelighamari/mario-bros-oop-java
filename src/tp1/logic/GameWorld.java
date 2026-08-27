@@ -3,6 +3,8 @@ package tp1.logic;
 import tp1.exceptions.GameLoadException;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.gameobjects.Mario;
+import tp1.logic.gameobjects.Mushroom;
 
 public interface GameWorld {
 

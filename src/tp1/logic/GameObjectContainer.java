@@ -3,7 +3,6 @@ package tp1.logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.exceptions.GameModelException;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
 
@@ -78,27 +77,6 @@ public class GameObjectContainer {
 			sb.append(o.toString()).append("\n");
 		}
 		return sb.toString();
-	}
-
-	public void reverseDirections() {
-		for (GameObject go : gameObjects) {
-			go.reverseDirection();
-		}
-
-	}
-
-	public void mirrorPos(int dimX) {
-		for (GameObject go : gameObjects) {
-			go.mirrorPosition(dimX);
-		}
-	}
-
-	public void teleport(Position ini, Position fin) throws GameModelException {
-		for (GameObject obj : gameObjects) {
-			if (obj.isInPosition(ini)) {
-				obj.teleport(fin);
-			}
-		}
 	}
 
 }

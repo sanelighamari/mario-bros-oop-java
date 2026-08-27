@@ -4,7 +4,7 @@ import tp1.exceptions.ActionParseException;
 import tp1.view.Messages;
 
 public enum Action {
-	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0), GRENADE(0, 0);
+	LEFT(-1, 0), RIGHT(1, 0), DOWN(0, 1), UP(0, -1), STOP(0, 0);
 
 	private int x;
 	private int y;
@@ -30,7 +30,6 @@ public enum Action {
 			return LEFT;
 		default:
 			return STOP;
-			
 		}
 	}
 
@@ -53,9 +52,6 @@ public enum Action {
 		case "stop":
 		case "s":
 			return STOP;
-        case "grenade":
-        case "gr":
-            return GRENADE;
 		default:
 			throw new ActionParseException(Messages.UNKNOWN_ACTION.formatted(str));
 		}

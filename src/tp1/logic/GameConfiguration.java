@@ -2,7 +2,6 @@ package tp1.logic;
 
 import java.util.List;
 import tp1.logic.gameobjects.GameObject;
-import tp1.logic.gameobjects.Luigi;
 import tp1.logic.gameobjects.Mario;
 
 public interface GameConfiguration {
@@ -12,9 +11,7 @@ public interface GameConfiguration {
 
 	public int numLives();
 
-	public Mario getMario();
-
-	public Luigi getLuigi();
+	Mario getMario();
 
 	public List<GameObject> getNPCObjects();
 

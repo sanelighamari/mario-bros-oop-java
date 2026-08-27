@@ -62,7 +62,7 @@ public class Box extends GameObject {
 	}
 
 	@Override
-	public boolean receiveInteraction(Player player) {
+	public boolean receiveInteraction(Mario mario) {
 		return true;
 	}
 

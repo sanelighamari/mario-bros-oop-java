@@ -47,8 +47,6 @@ public class ActionList {
 			lista.add(act);
 			contX = MAX_ACTIONS;
 			contY = MAX_ACTIONS;
-		} else if (act == Action.GRENADE) {
-			lista.add(act);
 		}
 	}
 
