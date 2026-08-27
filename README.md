@@ -1,6 +1,6 @@
 # 🍄 Super Mario Bros Clone - Console Edition (Java)
 
-[![Gameplay Preview](preview.png)](AQUÍ_PEGA_EL_ENLACE_DE_TU_VIDEO_DE_YOUTUBE](https://youtu.be/ZcKEf89TuFc)
+[![Gameplay Preview](preview.png)](https://youtu.be/ZcKEf89TuFc)
 
 ![Java Version](https://img.shields.io/badge/Java-21-orange.svg)
 ![Paradigm](https://img.shields.io/badge/Paradigm-OOP-blue.svg)
