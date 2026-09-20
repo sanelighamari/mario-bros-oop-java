@@ -1,12 +1,15 @@
 # 🍄 Super Mario Bros Clone - Console Edition (Java)
 
 [![Gameplay Preview](preview.png)](https://youtu.be/ZcKEf89TuFc)
+*(Click the image above to watch the full gameplay demo on YouTube)*
 
 ![Java Version](https://img.shields.io/badge/Java-21-orange.svg)
 ![Paradigm](https://img.shields.io/badge/Paradigm-OOP-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Completed-success.svg)
 
 A fully playable Super Mario Bros clone running entirely in the command-line terminal. This project was initially developed as a coursework practice at Universidad Complutense de Madrid (UCM), with a strong focus on **Object-Oriented Programming (OOP)** and **Clean Code**.
+
+> **Note:** This branch contains the **extended, solo-developed version** of the engine. To view the original university coursework developed in pairs, please visit the [base branch](../../tree/base).
 
 ## 🚀 Features & Upgrades
 Building upon the base university project, I expanded the game engine by implementing advanced features to push the software design further:
